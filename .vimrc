@@ -55,7 +55,7 @@ set termencoding=utf-8
 set fileencodings=utf-8,chinese
 set encoding=utf-8  "if not set, the powerline plugins won't work 
 if has("win32") || has("win64")
-    set fileencoding=chinese
+set fileencoding=chinese
 endif
 set autoindent
 set tabstop=4        " tab width is 4 spaces
@@ -95,9 +95,15 @@ nmap <c-l> <c-w>l
 
 " tab navigation like firefox{{{
 nnoremap <leader><tab> :tabnext<CR>
-nnoremap <m-t>     :tabnew<CR>
 inoremap <leader><tab>   <Esc>:tabnext<CR>i
+if has("gui_macvim")
+nnoremap <m-t>     :tabnew<CR>
 inoremap <m-t>     <Esc> :tabnew<CR>
+else
+nnoremap <A-t>     :tabnew<CR>
+inoremap <A-t>     <Esc> :tabnew<CR>
+endif
+
 "}}}
 
 "search" {{{
@@ -194,11 +200,19 @@ endif
 
 " we can't use <tab> as our snippet key since we use that with YouCompleteMe
 let g:UltiSnipsSnippetsDir         = $HOME . '/.vim/UltiSnips'
+if has("gui_macvim")
 let g:UltiSnipsExpandTrigger       = "<m-s>"
 let g:UltiSnipsListSnippets        = "<c-m-s>"
 let g:UltiSnipsJumpForwardTrigger  = "<m-f>"
 let g:UltiSnipsJumpBackwardTrigger = "<m-b>"
+else
+let g:UltiSnipsExpandTrigger       = "<A-s>"
+"let g:UltiSnipsListSnippets        = "<c-A-s>"
+let g:UltiSnipsJumpForwardTrigger  = "<A-f>"
+let g:UltiSnipsJumpBackwardTrigger = "<A-b>"
+endif
 let g:snips_author                 = 'Strahinja Val Markovic'
+
 
 
 
