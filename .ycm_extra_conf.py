@@ -149,11 +149,11 @@ flags = [
 
 
 #fw_game_client
-'-isystem','/Users/peng/workspace/fw_game_client/fw_game_client/Classes/Framework/Animation',
-'-isystem','/Users/peng/workspace/fw_game_client/fw_game_client/Classes/Framework/Core',
-'-isystem','/Users/peng/workspace/fw_game_client/fw_game_client/Classes/Framework/MVC',
-'-isystem','/Users/peng/workspace/fw_game_client/fw_game_client/Classes/Sample/MainGame',
-'-isystem','/Users/peng/workspace/fw_game_client/fw_game_client/Classes/TestClasses/SceneTest'
+'-isystem','/Users/peng/workspace/cocos2d-x-2.1.4/fw_game_client/classes/framework/animation',
+'-isystem','/Users/peng/workspace/cocos2d-x-2.1.4/fw_game_client/classes/framework/core',
+'-isystem','/Users/peng/workspace/cocos2d-x-2.1.4/fw_game_client/classes/framework/mvc',
+#'-isystem','/Users/peng/workspace/cocos2d-x-2.1.4/fw_game_client/classes/sample/maingame',
+#'-isystem','/Users/peng/workspace/cocos2d-x-2.1.4/fw_game_client/classes/testclasses/scenetest'
 ]
  
 if compilation_database_folder:

@@ -92,14 +92,28 @@ nmap <c-l> <c-w>l
 "nnoremap k gk
 "}}}
 
-"better tag navigation from www.vimbits.com {{{
-nnoremap <leader><Enter> <C-]>
 
 " tab navigation like firefox{{{
 nnoremap <leader><tab> :tabnext<CR>
 nnoremap <m-t>     :tabnew<CR>
 inoremap <leader><tab>   <Esc>:tabnext<CR>i
 inoremap <m-t>     <Esc> :tabnew<CR>
+"}}}
+
+"search" {{{
+"set incsearch
+"set hls
+"nnoremap <silent> <leader>nl :<C-u>nohlsearch<CR><C-l>
+"nnoremap <silent> <C-c> :%s///gn<cr>
+"vnoremap < <gv
+"vnoremap > >gv
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+nnoremap <silent> g# g#zz
+"vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 "}}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                DoxygenToolkit                           "
@@ -146,7 +160,7 @@ au FileType nerdtree cnoreabbrev <buffer> BD <nop>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 syntax enable
-set background=dark
+set background=light
 colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -170,7 +184,7 @@ nmap <leader>bf :BufExplorer<cr>
 " be turned off when necessary (for instance, when we want to input special
 " characters) with :set nomacmeta.
 if has("gui_macvim")
-  set macmeta
+set macmeta
 endif
 
 
@@ -193,7 +207,7 @@ let g:snips_author                 = 'Strahinja Val Markovic'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let Tlist_Use_Right_Window = 1
 if has("gui_macvim")
-  let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 endif
 "open a tag list ivew
 nmap <silent> <leader>ta :TagbarToggle <CR>
@@ -201,7 +215,7 @@ nmap <silent> <leader>ta :TagbarToggle <CR>
 
 " Generate tags on save. Note that this regenerates tags for all files in current folder {{{
 function! GenerateTagsFile()
-    exec ":!ctags -R --c++-kinds=+p --fields=+liaS --extra=+q ."
+exec ":!ctags -R --c++-kinds=+p --fields=+liaS --extra=+q ."
 endfunction
 
 "function! GenerateJsTags()
@@ -224,11 +238,13 @@ let g:ycm_min_num_identifier_candidate_chars = 4
 let g:ycm_extra_conf_globlist = ['~/.ycm_extra_conf.py']
 let g:ycm_filetype_specific_completion_to_disable = {'javascript': 1}
 
+"better tag navigation from www.vimbits.com {{{
+"nnoremap <leader><Enter> <C-]>
 nnoremap <leader>y :YcmForceCompileAndDiagnostics<cr>
-nnoremap <leader>pg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader><Enter> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
-
+nmap <c-t> :e#<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                syntastic                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
