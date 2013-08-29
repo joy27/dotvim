@@ -26,6 +26,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'nelstrom/vim-visual-star-search'
+Bundle 'mileszs/ack.vim'
 
 filetype plugin indent on     " required!
 
@@ -121,6 +123,28 @@ nnoremap <silent> g* g*zz
 nnoremap <silent> g# g#zz
 "vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 "}}}
+
+
+"quickfix mapping
+" Quickfix
+nnoremap <silent> ]b :cnext<CR>
+nnoremap <silent> [b :cprev<CR>
+nnoremap <silent> [B :cfirst<CR>
+nnoremap <silent> ]B :clast<CR>
+" http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
+command! -bang -nargs=? QFix call QFixToggle(<bang>0)
+function! QFixToggle(forced)
+	if exists("g:qfix_win") && a:forced == 0
+		cclose
+		unlet g:qfix_win
+	else
+		copen 10
+		let g:qfix_win = bufnr("$")
+	endif
+endfunction
+
+"Ack just do :Ack xxx 
+"vim-visual-star-search just do:<leader> *      and then   :QFix
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                DoxygenToolkit                           "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -236,7 +260,7 @@ endfunction
 "    exec ":!jsctags ."
 "endfunction
 
-nnoremap <leader>8   :call GenerateTagsFile() <cr>
+"nnoremap <leader>8   :call GenerateTagsFile() <cr>
 "nnoremap <leader>9   :call GenerateJsTags() <cr>
 
 " config ctags file locations {{{
